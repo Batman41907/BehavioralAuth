@@ -24,6 +24,11 @@ train_y_p=train_p.Participant
 test_x_p=test_p[['Angle(°)','BodyMotion(m)','Speed(m/s)','HeadsetY(m)','HeadAngularVelocity(rad/s)']]
 test_y_p=test_p.Participant
 
+model = RandomForestClassifier(random_state=42)
+model.fit(train_x_p,train_y_p) 
+prediction=model.predict(test_x_p) 
+print('The accuracy of the RandomForest is:',metrics.accuracy_score(prediction,test_y_p))
+
 model=DecisionTreeClassifier()
 model.fit(train_x_p,train_y_p)
 prediction=model.predict(test_x_p)
